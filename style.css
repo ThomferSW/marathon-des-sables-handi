@@ -56,19 +56,20 @@ ul {
     text-align: center;
     padding: 20px;
     color: rgba(233, 214, 198, 0.5);
-    margin-top: 25vh;
-    margin-bottom: 0;
+    margin-top: 15vh;
+    margin-bottom: 75vh;
 }
 
 
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1000;
     background-color: rgba(243, 235, 225, 0.75);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    
+    display: flex;
 }
 
 .navbar ul {
@@ -102,4 +103,11 @@ ul {
     padding: 80px 20px;
     min-height: 100vh;
     margin-top: 50px;
+}
+
+.logo{
+    width: 80px;
+    height: auto;
+    align-items: center;
+    object-fit: contain;
 }
