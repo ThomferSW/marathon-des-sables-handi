@@ -1,3 +1,10 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+
 :root {
     --color-bg-page: #fdf8f2;
     /* Sable Clair */
@@ -31,11 +38,45 @@ body,
     color: var(--color-text-main);
     background-color: var(--color-bg-page);
 }
-body{
+
+body {
     background-color: var(--color-bg-page);
+}
+
+ul {
+    list-style-type: none;
 }
 
 .bigtitle {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 700;
+    text-align: center;
+    padding: 20px;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 20px;
+    padding: 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-weight: bold;
+    text-align: right;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.navbar {
+    background-color: var(--color-bg-section);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
