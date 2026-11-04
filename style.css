@@ -39,6 +39,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     min-height: 100vh;
     background-color: var(--color-bg-page);
 }
@@ -58,6 +59,8 @@ ul {
     color: rgba(233, 214, 198, 0.5);
     margin-top: 15vh;
     margin-bottom: 75vh;
+
+    will-change: transform;
 }
 
 
@@ -68,7 +71,9 @@ ul {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    
+
+    z-index: 100;
+
     display: flex;
 }
 
@@ -105,9 +110,70 @@ ul {
     margin-top: 50px;
 }
 
-.logo{
+.logo {
     width: 80px;
     height: auto;
     align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-left: 50px;
+    margin-right: 1100px;
     object-fit: contain;
+}
+
+.images-container img {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    will-change: transform;
+}
+
+/* Inclinaisons individuelles */
+.basket-img {
+    transform: rotate(-8deg);
+    margin-right: 120px;
+}
+
+.flamme-img {
+    transform: rotate(10deg);
+    margin-right: 100px;
+}
+
+.tennis-img {
+    transform: rotate(-5deg);
+    margin-right: 90px;
+    margin-left: 80px;
+}
+
+.cne-img {
+    transform: rotate(3deg);
+    margin-right: 100px;
+    margin-left: 90px;
+}
+
+.basket-img-main {
+    transform: rotate(-3deg);
+    margin-right: 60px;
+}
+
+.flamme-img-front {
+    transform: rotate(2deg);
+    margin-right: 100px;
+    margin-left: 70px;
+}
+
+.logoiut {
+    width: 180px;
+    height: auto;
+    object-fit: cover;
+    position: fixed;
+}
+
+.logo-exterieur {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 30px;
+    width: 100%;
 }
