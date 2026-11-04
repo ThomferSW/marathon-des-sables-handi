@@ -4,20 +4,14 @@
     box-sizing: border-box;
 }
 
-
 :root {
     --color-bg-page: #fdf8f2;
-    /* Sable Clair */
     --color-bg-card: #ffffff;
-    /* Blanc pour le détachement des cartes */
     --color-bg-section: #f3ebe1;
-    /* Sable Ombré pour alterner les sections */
-
     --color-text-main: #2d2219;
-    /* Ombre de Roche */
 }
 
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;600;700;900&display=swap');
 
 h1,
 h2,
@@ -36,23 +30,28 @@ body,
     font-weight: 400;
     line-height: 1.6;
     color: var(--color-text-main);
-    background-color: var(--color-bg-page);
 }
 
 body {
     margin: 0;
     padding: 0;
+    background-image: url('bgmain.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
     background-color: var(--color-bg-page);
 }
 
 ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .bigtitle {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 3.5rem;
-    font-weight: 600;
     font-weight: 900;
     text-align: center;
     padding: 20px;
@@ -61,45 +60,6 @@ ul {
     margin-bottom: 0;
 }
 
-.navbar {
-    background-color: rgba(243, 235, 225, 0.85);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.navbar li {
-    display: inline-block;
-    margin-right: 20px;
-    padding: 25px;
-    padding-bottom: 30px;
-    display: inline-block;
-    margin-right: 20px;
-    padding: 25px 15px;
-    transition: background-color 0.3s ease;
-}
-
-/* .navbar li:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-} */
-
-.navbar a {
-    text-decoration: none;
-    color: var(--color-text-main);
-    font-weight: bold;
-    text-align: right;
-    transition: color 0.3s ease, opacity 0.3s ease;
-}
-
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-}
 
 .navbar {
     position: sticky;
@@ -111,23 +71,35 @@ ul {
     -webkit-backdrop-filter: blur(8px);
 }
 
+.navbar ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.navbar li {
+    padding: 25px 15px;
+    transition: background-color 0.3s ease;
+}
+
+
+.navbar a {
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-weight: bold;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
 .navbar a:hover {
     color: #b85d14;
     opacity: 0.8;
 }
 
-body {
-    background-image: url('bgmain.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-}
 
-infomain{
+.infomain {
     background-color: #2d2219;
-        color: var(--color-bg-page);
-        padding: 80px 20px;
-        min-height: 100vh;
-        margin-top: 50px;
+    color: var(--color-bg-page);
+    padding: 80px 20px;
+    min-height: 100vh;
+    margin-top: 50px;
 }
