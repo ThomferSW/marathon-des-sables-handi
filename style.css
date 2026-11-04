@@ -123,3 +123,11 @@ body {
     background-position: center;
     min-height: 100vh;
 }
+
+infomain{
+    background-color: #2d2219;
+        color: var(--color-bg-page);
+        padding: 80px 20px;
+        min-height: 100vh;
+        margin-top: 50px;
+}
