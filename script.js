@@ -1,30 +1,24 @@
-// Attendre que tout le contenu de la page soit chargé avant d'exécuter le script
-document.addEventListener("DOMContentLoaded", (event) => {
-
-    // Enregistrement du plugin ScrollTrigger auprès de GSAP
+document.addEventListener("DOMContentLoaded", () => {
+    // Enregistrement de ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Sélection des éléments pour le bouton d'accessibilité
     const accessBtn = document.getElementById('accessibility-btn');
     const btnText = document.getElementById('btn-text');
     let animationsEnabled = true;
 
-    // Fonction pour activer ou désactiver les animations
     function toggleAnimations(enable) {
         if (enable) {
             ScrollTrigger.refresh();
             if (btnText) btnText.textContent = "Animations : ON";
             if (accessBtn) accessBtn.style.opacity = "1";
         } else {
-            // Coupe toutes les animations GSAP et remet les éléments dans leur état d'origine
             ScrollTrigger.getAll().forEach(st => st.kill());
-            gsap.set(['.bigtitle', '.images-container img'], { clearProps: "all" });
+            gsap.set(['.bigtitle', '.images-container img', '.title-main .word-inner', '.title-sub .word-inner'], { clearProps: "all" });
             if (btnText) btnText.textContent = "Animations : OFF";
             if (accessBtn) accessBtn.style.opacity = "0.7";
         }
     }
 
-    // 1. Vérification des préférences d'accessibilité (système ou choix enregistré)
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const savedPreference = localStorage.getItem('animations');
 
@@ -35,52 +29,128 @@ document.addEventListener("DOMContentLoaded", (event) => {
         initAnimations();
     }
 
-    // 2. Gestion du clic sur le bouton d'accessibilité manuel
     if (accessBtn) {
         accessBtn.addEventListener('click', () => {
             animationsEnabled = !animationsEnabled;
             localStorage.setItem('animations', animationsEnabled);
             if (animationsEnabled) {
-                location.reload(); // Recharge la page proprement pour relancer GSAP
+                location.reload();
             } else {
                 toggleAnimations(false);
             }
         });
     }
 
-    // 3. Fonction d'initialisation des animations GSAP
     function initAnimations() {
         if (!animationsEnabled) return;
 
-        // A. Effet de parallaxe fluide sur le grand titre
-        gsap.to('.bigtitle', {
-            y: () => window.scrollY * 0.4,
+        // ==========================================
+        // 1. GESTION ACCESSIBLE DU TITRE ET SOUS-TITRE
+        // ==========================================
+        const mainTitle = document.querySelector('.title-main');
+        const subTitle = document.querySelector('.title-sub');
+
+        function makeAccessibleAndWrap(element) {
+            if (!element) return;
+            const originalText = element.textContent.trim();
+
+            // On masque proprement le texte découpé pour les lecteurs d'écran (aria-hidden)
+            // et on force le lecteur d'écran à lire le texte complet d'un seul bloc via aria-label
+            element.setAttribute('aria-label', originalText);
+
+            const words = originalText.split(' ');
+            element.innerHTML = `<span aria-hidden="true">` + words.map(word =>
+                `<span class="word-wrap" style="display:inline-block; overflow:hidden; vertical-align:bottom; padding-bottom:5px;"><span class="word-inner" style="display:inline-block; will-change:transform;">${word}&nbsp;</span></span>`
+            ).join('') + `</span>`;
+        }
+
+        makeAccessibleAndWrap(mainTitle);
+        makeAccessibleAndWrap(subTitle);
+
+        // Animation d'entrée : les mots sortent de leur cache en cascade
+        gsap.fromTo('.bigtitle .word-inner',
+            { y: 100, opacity: 0, rotate: 5 },
+            {
+                y: 0,
+                opacity: 1,
+                rotate: 0,
+                duration: 1.4,
+                stagger: 0.05,
+                ease: 'power4.out',
+                delay: 0.2
+            }
+        );
+
+        // ==========================================
+        // 2. EFFET DE SURVOL MAGNÉTIQUE SUR LES MOTS
+        // ==========================================
+        const wordInners = document.querySelectorAll('.bigtitle .word-inner');
+        wordInners.forEach(word => {
+            word.addEventListener('mouseenter', () => {
+                if (!animationsEnabled) return;
+                gsap.to(word, {
+                    y: -8,
+                    color: '#b85d14',
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            });
+            word.addEventListener('mouseleave', () => {
+                if (!animationsEnabled) return;
+                gsap.to(word, {
+                    y: 0,
+                    color: '',
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // ==========================================
+        // 3. EFFET DE PARALLAXE CINÉMATIQUE AU SCROLL
+        // ==========================================
+        gsap.to('.title-main', {
+            y: -120,
+            opacity: 0,
             ease: 'none',
             scrollTrigger: {
-                trigger: 'body',
+                trigger: '.bigtitle',
                 start: 'top top',
-                end: 'bottom top',
-                scrub: true, // Synchronisé avec la molette
+                end: '+=500',
+                scrub: true,
             }
         });
 
-        // B. Animation des photos au scroll : déclenchement dès qu'elles sont entièrement dans l'écran
+        gsap.to('.title-sub', {
+            y: -60,
+            opacity: 0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.bigtitle',
+                start: 'top top',
+                end: '+=400',
+                scrub: true,
+            }
+        });
+
+        // ==========================================
+        // 4. ANIMATION DES IMAGES AU SCROLL
+        // ==========================================
         const images = document.querySelectorAll('.images-container img');
         images.forEach((img, index) => {
-            // Rotation alternée (gauche / droite) selon la position de l'image
             const rotationAngle = index % 2 === 0 ? 25 : -25;
 
             gsap.to(img, {
-                y: -350,                 // Distance de remontée (augmentée pour aller plus haut et plus vite)
-                rotation: rotationAngle, // Rotation légère
-                scale: 1.25,             // Zoom progressif
-                opacity: 0,              // Disparition progressive
+                y: -350,
+                rotation: rotationAngle,
+                scale: 1.25,
+                opacity: 0,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: '.images-container',
-                    start: 'top bottom',    // L'animation commence dès que le haut de la zone touche le bas de l'écran (entièrement visible)
-                    end: 'center top',      // L'effet se termine plus rapidement lorsque le conteneur arrive au milieu de l'écran
-                    scrub: true,            // Suivi fluide et direct de la molette
+                    start: 'top bottom',
+                    end: 'center top',
+                    scrub: true,
                 }
             });
         });

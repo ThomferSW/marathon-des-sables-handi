@@ -51,15 +51,48 @@ ul {
 }
 
 .bigtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 3.5rem;
-    font-weight: 900;
     text-align: center;
-    padding: 20px;
-    color: rgba(233, 214, 198, 0.5);
-    margin-top: 15vh;
-    margin-bottom: 75vh;
+    padding: 0 20px;
+    margin-top: 12vh;
+    margin-bottom: 70vh;
     will-change: transform;
+}
+
+.title-main {
+    font-size: 4.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    color: #2d2219;
+    margin-bottom: 15px;
+}
+
+.title-sub {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--color-bg-card);
+    letter-spacing: 0.5px;
+}
+
+/* EFFET IA  */
+
+bigtitle .word {
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.bigtitle .word:hover {
+    color: #b85d14 !important;
+    /* Passe à ta couleur terracotta signature */
+    transform: translateY(-5px) scale(1.05);
+    /* Légère lévitation et zoom au survol */
 }
 
 .navbar {
@@ -447,5 +480,5 @@ ul {
 
 #accessibility-btn:hover {
     background-color: #572d0a;
-    /* transform: translateY(-2px); */
+    transform: translateY(-2px);
 }

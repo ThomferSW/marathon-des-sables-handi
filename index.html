@@ -4,15 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link
-        href="https://googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="/images/photos/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
     <title>Projet MDSH 2027</title>
 </head>
 
@@ -30,11 +26,15 @@
     <div class="logo-exterieur">
         <img class="logoiut" src="/images/photos/IUT-RVB-couleurs-72dpi.png" alt="Logo extérieur">
     </div>
-    <button id="accessibility-btn" aria-label="Activer ou désactiver les animations"
-        title="Activer/Désactiver les animations">
+
+    <button id="accessibility-btn" aria-label="Activer ou désactiver les animations" title="Activer/Désactiver les animations">
         <span id="btn-text">Animations : ON</span>
     </button>
-    <h1 class="bigtitle">Projet Marathon des Sables Handisport 2027 !</h1>
+
+    <h1 class="bigtitle">
+        <span class="title-main">Cap sur le désert</span>
+        <span class="title-sub">Projet Marathon des Sables Handisport 2027</span>
+    </h1>
 
     <div class="images-container">
         <img class="cne-img" src="/images/photos/cne.jpg" alt="Tennis">
@@ -49,30 +49,22 @@
         <div class="text-content">
             <h2>Mon projet</h2>
             <p class="bienvenue">Bienvenue sur mon site ! Je me lance un défi sportif et humain hors du commun :
-                participer au Marathon
-                des Sables
-                Handisport 2027. <br><br>
+                participer au Marathon des Sables Handisport 2027. <br><br>
                 À travers cette aventure extrême au cœur du désert, mon objectif dépasse la simple performance sportive.
-                Je souhaite
-                promouvoir le sport adapté, repousser les limites du handicap et prouver que la détermination franchit
-                toutes les dunes.
+                Je souhaite promouvoir le sport adapté, repousser les limites du handicap et prouver que la détermination franchit toutes les dunes.
                 <br><br>
-                Ce projet est une aventure collective. Que vous soyez un particulier ou un partenaire, découvrez mon
-                parcours et
-                rejoignez l'aventure à mes côtés !
+                Ce projet est une aventure collective. Que vous soyez un particulier ou un partenaire, découvrez mon parcours et rejoignez l'aventure à mes côtés !
             </p>
             <a class="info-marathon" href="">Le Marathon</a>
         </div>
         <div class="image-content">
             <div class="framed-image-container">
                 <div class="decorative-frame"></div>
-                <img class="vector" src="/images/vectors/Dunes — Le chemin des sables.svg"
-                    alt="Illustration vectorielle">
+                <img class="vector" src="/images/vectors/Dunes — Le chemin des sables.svg" alt="Illustration vectorielle">
             </div>
         </div>
     </section>
 
-    <!-- SECTION VERRE CORRIGÉE AVEC LE CARDS-CONTAINER -->
     <section class="glass-section">
         <h2 class="title-projet">Le Projet</h2>
         <div class="cards-container">
@@ -94,7 +86,6 @@
 
     <section class="white-section">
         <h2 class="title-partenaires">Mes Partenaires</h2>
-
         <div class="cards-container">
             <div class="card-box card-dark">
                 <img src="/images/vectors/Dunes — Le passage du soleil.svg" alt="Dunes vectorielle">
@@ -112,43 +103,42 @@
         </div>
     </section>
 
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="/images/photos/logo.png" alt="Logo Projet MDSH 2027" class="footer-logo">
+                <p>Projet Marathon des Sables Handisport 2027. Un défi sportif et humain engagé pour le dépassement de soi et l'accessibilité du sport.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="">Mon Projet</a></li>
+                    <li><a href="">Qui suis-je ?</a></li>
+                    <li><a href="">Le MDSH 2027</a></li>
+                    <li><a href="">Comment m'aider</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Informations & Légal</h3>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                    <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+                    <li><a href="credits.html">Crédits photos</a></li>
+                    <li><a href="mailto:thomas.fer@free.fr">Contact : thomas.fer@free.fr</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2027 Projet MDSH 2027. Tous droits réservés. Site réalisé dans le cadre du projet Marathon des Sables Handi 2027.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
 </body>
-
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-col">
-            <img src="/images/photos/logo.png" alt="Logo Projet MDSH 2027" class="footer-logo">
-            <p>Projet Marathon des Sables Handisport 2027. Un défi sportif et humain engagé pour le dépassement de soi
-                et l'accessibilité du sport.</p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Navigation</h3>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="">Mon Projet</a></li>
-                <li><a href="">Qui suis-je ?</a></li>
-                <li><a href="">Le MDSH 2027</a></li>
-                <li><a href="">Comment m'aider</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h3>Informations & Légal</h3>
-            <ul>
-                <li><a href="mentions-legales.html">Mentions Légales</a></li>
-                <li><a href="confidentialite.html">Politique de confidentialité</a></li>
-                <li><a href="credits.html">Crédits photos</a></li>
-                <li><a href="mailto:votre-email@exemple.com">Contact : thomas.fer@free.fr</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>&copy; 2027 Projet MDSH 2027. Tous droits réservés. Site réalisé dans le cadre du projet Marathon des Sables
-            Handi 2027.</p>
-    </div>
-</footer>
-<script src="script.js"></script>
-
 </html>
