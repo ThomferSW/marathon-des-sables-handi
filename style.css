@@ -267,14 +267,9 @@ ul {
 
 /* SECTION TRANSPARANTE  */
 
-/* 1. LA SECTION GLOBALE EN VERRE FLOU / TRANSPARENT */
 .glass-section {
     background: rgba(255, 255, 255, 0.12);
-    /* Fond blanc très léger */
     backdrop-filter: blur(15px);
-    /* Floute le fond bgmain.jpg */
-    -webkit-backdrop-filter: blur(15px);
-    /* Pour Safari */
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
@@ -282,17 +277,13 @@ ul {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    /* Même hauteur pour les 2 cartes */
     gap: 40px;
     flex-wrap: wrap;
-    /* Responsive mobile */
 }
 
-/* 2. STYLE COMMUN AUX CARTES */
 .card-box {
     width: 420px;
     padding: 30px;
-    border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
@@ -300,17 +291,12 @@ ul {
     transition: transform 0.3s ease;
 }
 
-.card-box:hover {
-    transform: translateY(-8px);
-}
-
-.card-box img {
+/* .card-box img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 12px;
     margin-bottom: 20px;
-}
+} */
 
 .card-box h3 {
     margin-top: 0;
@@ -318,7 +304,6 @@ ul {
     margin-bottom: 12px;
 }
 
-/* 3. OPTION 1 : CARTE MARRON */
 .card-dark {
     background-color: #2d2219;
     color: #fdf8f2;
@@ -329,7 +314,6 @@ ul {
     color: #ffffff;
 }
 
-/* 4. OPTION 2 : CARTE BEIGE */
 .card-light {
     background-color: #f3ebe1;
     color: #2d2219;
@@ -340,13 +324,11 @@ ul {
     color: #fdf8f2;
 }
 
-/* 5. STYLE DES BOUTONS */
 .card-btn {
     display: inline-block;
     align-self: flex-start;
     margin-top: 15px;
     padding: 10px 24px;
-    border-radius: 30px;
     font-weight: 700;
     text-decoration: none;
     transition: opacity 0.3s ease, transform 0.2s ease;
@@ -355,4 +337,83 @@ ul {
 .card-btn:hover {
     opacity: 0.85;
     transform: translateY(-2px);
+}
+
+
+/* FOOTER  */
+
+.site-footer {
+    background-color: #2d2219;
+    color: #fdf8f2;
+    padding-top: 60px;
+    margin-top: 80px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-logo {
+    width: 70px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+.footer-col h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #f3ebe1;
+    border-bottom: 2px solid rgba(243, 235, 225, 0.2);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #fdf8f2;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    opacity: 1;
+    color: #b85d14;
+}
+
+.footer-bottom {
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
 }
