@@ -59,10 +59,8 @@ ul {
     color: rgba(233, 214, 198, 0.5);
     margin-top: 15vh;
     margin-bottom: 75vh;
-
     will-change: transform;
 }
-
 
 .navbar {
     position: sticky;
@@ -71,9 +69,7 @@ ul {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-
     z-index: 100;
-
     display: flex;
 }
 
@@ -88,7 +84,6 @@ ul {
     transition: background-color 0.3s ease;
 }
 
-
 .navbar a {
     text-decoration: none;
     color: var(--color-text-main);
@@ -101,13 +96,17 @@ ul {
     opacity: 0.8;
 }
 
-
 .infomain {
     background-color: #2d2219;
     color: var(--color-bg-page);
     padding: 80px 20px;
     min-height: 100vh;
     margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .logo {
@@ -176,14 +175,6 @@ ul {
     height: auto;
 }
 
-.infomain {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
 .portrait {
     justify-content: center;
     align-items: center;
@@ -205,9 +196,7 @@ ul {
     font-size: 1.2rem;
 }
 
-
-/* CADRE IMAGE VECTOR  */
-
+/* CADRE IMAGE VECTOR */
 .framed-image-container {
     position: relative;
     display: inline-block;
@@ -240,7 +229,6 @@ ul {
 }
 
 /* BOUTON INFO MARATHON */
-
 .info-marathon {
     display: inline-block;
     background-color: #b85d14;
@@ -265,22 +253,52 @@ ul {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* SECTION TRANSPARANTE  */
-
+/* SECTION TRANSPARANTE (Glassmorphism) */
 .glass-section {
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
     padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* SECTION BLANCHE / SECTION PARTENAIRES */
+.white-section {
+    background-color: var(--color-bg-section);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* TITRES */
+.title-projet,
+.title-partenaires {
+    font-size: 2.8rem;
+    color: var(--color-text-main);
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* CONTENEUR DE CARTES CÔTE À CÔTE */
+.cards-container {
     display: flex;
     justify-content: center;
     align-items: stretch;
     gap: 40px;
+    width: 100%;
+    max-width: 1000px;
     flex-wrap: wrap;
 }
 
+/* STYLE DES CARTES */
 .card-box {
     width: 420px;
     padding: 30px;
@@ -289,14 +307,8 @@ ul {
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease;
+    border-radius: 20px;
 }
-
-/* .card-box img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    margin-bottom: 20px;
-} */
 
 .card-box h3 {
     margin-top: 0;
@@ -331,6 +343,7 @@ ul {
     padding: 10px 24px;
     font-weight: 700;
     text-decoration: none;
+    border-radius: 30px;
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
@@ -339,9 +352,7 @@ ul {
     transform: translateY(-2px);
 }
 
-
-/* FOOTER  */
-
+/* FOOTER */
 .site-footer {
     background-color: #2d2219;
     color: #fdf8f2;
@@ -410,10 +421,8 @@ ul {
 }
 
 .footer-bottom {
-    /* background-color: rgba(0, 0, 0, 0.2); */
     text-align: center;
     padding: 20px;
     font-size: 0.85rem;
     opacity: 0.7;
-    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
 }
