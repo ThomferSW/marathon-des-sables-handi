@@ -424,3 +424,29 @@ ul {
     font-size: 0.85rem;
     opacity: 0.7;
 }
+
+/* ANIMATION  */
+
+
+#accessibility-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #2d2219;
+    color: #fdf8f2;
+    border: 2px solid #b85d14;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#accessibility-btn:hover {
+    background-color: #b85d14;
+    transform: translateY(-2px);
+}
