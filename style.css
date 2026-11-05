@@ -307,7 +307,6 @@ ul {
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease;
-    border-radius: 20px;
 }
 
 .card-box h3 {
@@ -343,7 +342,6 @@ ul {
     padding: 10px 24px;
     font-weight: 700;
     text-decoration: none;
-    border-radius: 30px;
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
