@@ -20,11 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 800px)').matches;
     const savedPreference = localStorage.getItem('animations');
 
-    if (savedPreference === 'false' || (savedPreference === null && prefersReducedMotion)) {
+    if (savedPreference === 'false' || (savedPreference === null && prefersReducedMotion) || isMobile) {
         animationsEnabled = false;
         toggleAnimations(false);
+        if (isMobile && btnText) btnText.textContent = "Animations désactivées sur mobile";
     } else {
         initAnimations();
     }
