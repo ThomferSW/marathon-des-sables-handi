@@ -21,7 +21,7 @@ body {
     background-color: var(--color-bg-page);
     background-image:
         linear-gradient(rgba(253, 248, 242, 0.94), rgba(253, 248, 242, 0.94)),
-        url('/images/photos/bgmain.jpg');
+        url('bgmain.jpg');
     font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
     line-height: 1.7;
 }

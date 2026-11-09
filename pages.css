@@ -9,7 +9,7 @@
     padding: clamp(64px, 10vw, 128px) 24px clamp(56px, 8vw, 96px);
     background:
         linear-gradient(120deg, rgba(45, 34, 25, 0.96), rgba(81, 49, 27, 0.86)),
-        url('/images/photos/bgmain.jpg') center / cover;
+        url('bgmain.jpg') center / cover;
     color: #fdf8f2;
     text-align: center;
 }
