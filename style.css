@@ -9,6 +9,8 @@
     --color-bg-card: #ffffff;
     --color-bg-section: #f3ebe1;
     --color-text-main: #2d2219;
+    --color-accent: #873e0e;
+    --color-accent-hover: #6f310a;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;600;700;900&display=swap');
@@ -89,7 +91,7 @@ bigtitle .word {
 }
 
 .bigtitle .word:hover {
-    color: #b85d14 !important;
+    color: var(--color-accent) !important;
     /* Passe à ta couleur terracotta signature */
     transform: translateY(-5px) scale(1.05);
     /* Légère lévitation et zoom au survol */
@@ -125,7 +127,7 @@ bigtitle .word {
 }
 
 .navbar a:hover {
-    color: #b85d14;
+    color: var(--color-accent);
     opacity: 0.8;
 }
 
@@ -157,7 +159,6 @@ bigtitle .word {
     width: 180px;
     height: auto;
     object-fit: contain;
-    border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     will-change: transform;
 }
@@ -242,7 +243,7 @@ bigtitle .word {
     left: -15px;
     right: 75px;
     bottom: 15px;
-    border: 3px solid #b85d14;
+    border: 3px solid var(--color-accent);
     z-index: 0;
     transition: transform 0.3s ease;
 }
@@ -252,7 +253,6 @@ bigtitle .word {
     display: block;
     width: 300px;
     height: auto;
-    border-radius: 8px;
     z-index: 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
@@ -264,7 +264,7 @@ bigtitle .word {
 /* BOUTON INFO MARATHON */
 .info-marathon {
     display: inline-block;
-    background-color: #b85d14;
+    background-color: var(--color-accent);
     color: #fdf8f2;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 700;
@@ -276,7 +276,7 @@ bigtitle .word {
 }
 
 .info-marathon:hover {
-    background-color: #964a0f;
+    background-color: var(--color-accent-hover);
     transform: translateY(-3px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
@@ -354,7 +354,7 @@ bigtitle .word {
 }
 
 .card-dark .card-btn {
-    background-color: #b85d14;
+    background-color: var(--color-accent);
     color: #ffffff;
 }
 
@@ -448,7 +448,7 @@ bigtitle .word {
 
 .footer-col ul li a:hover {
     opacity: 1;
-    color: #b85d14;
+    color: var(--color-accent);
 }
 
 .footer-bottom {

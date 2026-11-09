@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!animationsEnabled) return;
                 gsap.to(word, {
                     y: -8,
-                    color: '#b85d14',
+                    color: '#873e0e',
                     duration: 0.4,
                     ease: 'power2.out'
                 });

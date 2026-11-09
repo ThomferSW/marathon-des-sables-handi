@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="accessibility.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="/images/photos/logo.png">
@@ -16,18 +17,22 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <a href="index.html"><img src="/images/photos/logo.png" alt="Logo" class="logo"></a>
-        <ul>
-            <li><a href="">Mon Projet</a></li>
-            <li><a href="">Qui-suis-je ?</a></li>
-            <li><a href="">le MDSH 2027</a></li>
-            <li><a href="">Comment m'aider</a></li>
-        </ul>
-    </div>
+    <a class="page-skip-link" href="#contenu">Aller au contenu</a>
+    <header class="navbar">
+        <a href="index.html" aria-label="Accueil - Projet MDSH 2027"><img src="/images/photos/logo.png" alt="Logo du projet MDSH 2027" class="logo"></a>
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="projet.html">Mon Projet</a></li>
+                <li><a href="qui-suis-je.html">Qui-suis-je ?</a></li>
+                <li><a href="mdsh-2027.html">Le MDSH 2027</a></li>
+                <li><a href="soutenir.html">Comment m'aider</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main id="contenu">
     <div class="logo-exterieur">
-        <img class="logoiut" src="/images/photos/IUT-RVB-couleurs-72dpi.png" alt="Logo extérieur">
+        <img class="logoiut" src="/images/photos/IUT-RVB-couleurs-72dpi.png" alt="Logo de l'IUT">
     </div>
 
     <button id="accessibility-btn" aria-label="Activer ou désactiver les animations"
@@ -61,7 +66,7 @@
                 Ce projet est une aventure collective. Que vous soyez un particulier ou un partenaire, découvrez mon
                 parcours et rejoignez l'aventure à mes côtés !
             </p>
-            <a class="info-marathon" href="">Le Marathon</a>
+            <a class="info-marathon" href="mdsh-2027.html">Le Marathon</a>
         </div>
         <div class="image-content">
             <div class="framed-image-container">
@@ -78,15 +83,15 @@
             <div class="card-box card-dark">
                 <img src="/images/vectors/Dunes — Le chemin des sables.svg" alt="Dunes vectorielle">
                 <h3>Pourquoi ce projet ?</h3>
-                <p>Insérez ici votre texte pour présenter cette partie de votre projet handisport.</p>
-                <a href="page1.html" class="card-btn">En savoir plus</a>
+                <p>Un défi sportif et humain pour faire avancer la visibilité du sport adapté et montrer que l'accessibilité se construit collectivement.</p>
+                <a href="projet.html" class="card-btn">En savoir plus</a>
             </div>
 
             <div class="card-box card-light">
                 <img src="/images/vectors/Exploration — Le canyon.svg" alt="Dunes ciel vectorielle">
                 <h3>Qui m'accompagne ?</h3>
-                <p>Insérez ici votre second texte pour compléter la présentation de votre démarche.</p>
-                <a href="page2.html" class="card-btn">En savoir plus</a>
+                <p>Découvrez la démarche derrière ce défi et les valeurs qui le font avancer.</p>
+                <a href="qui-suis-je.html" class="card-btn">En savoir plus</a>
             </div>
         </div>
     </section>
@@ -97,18 +102,20 @@
             <div class="card-box card-dark">
                 <img src="/images/vectors/Dunes — Le passage du soleil.svg" alt="Dunes vectorielle">
                 <h3>Mes partenaires</h3>
-                <p>Insérez ici votre texte pour présenter cette partie de votre projet handisport.</p>
-                <a href="page1.html" class="card-btn">En savoir plus</a>
+                <p>Entreprises, associations et particuliers peuvent contribuer à faire vivre ce projet.</p>
+                <a href="soutenir.html#partenaires" class="card-btn">En savoir plus</a>
             </div>
 
             <div class="card-box card-dark">
                 <img src="/images/vectors/Exploration — Les dunes vues du ciel.svg" alt="Dunes ciel vectorielle">
                 <h3>Comment me soutenir</h3>
-                <p>Insérez ici votre second texte pour compléter la présentation de votre démarche.</p>
-                <a href="page2.html" class="card-btn">En savoir plus</a>
+                <p>Un relais, un partage ou un partenariat : chaque soutien compte dans cette aventure.</p>
+                <a href="soutenir.html#actions" class="card-btn">En savoir plus</a>
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer class="site-footer">
         <div class="footer-container">
@@ -122,10 +129,10 @@
                 <h3>Navigation</h3>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="">Mon Projet</a></li>
-                    <li><a href="">Qui suis-je ?</a></li>
-                    <li><a href="">Le MDSH 2027</a></li>
-                    <li><a href="">Comment m'aider</a></li>
+                    <li><a href="projet.html">Mon Projet</a></li>
+                    <li><a href="qui-suis-je.html">Qui suis-je ?</a></li>
+                    <li><a href="mdsh-2027.html">Le MDSH 2027</a></li>
+                    <li><a href="soutenir.html">Comment m'aider</a></li>
                 </ul>
             </div>
 

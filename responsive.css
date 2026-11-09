@@ -64,7 +64,6 @@ body {
     height: clamp(120px, 15vw, 200px);
     max-width: none;
     margin: 0;
-    border-radius: 12px;
     object-fit: cover;
 }
 
