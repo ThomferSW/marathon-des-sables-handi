@@ -20,7 +20,7 @@ body {
     color: var(--color-text-main);
     background-color: var(--color-bg-page);
     background-image:
-        linear-gradient(rgba(253, 248, 242, 0.363), rgba(253, 248, 242, 0.94)),
+        linear-gradient(rgba(253, 248, 242, 0.541), rgba(253, 248, 242, 0.94)),
         url('bgmain.jpg');
     font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
     line-height: 1.7;
