@@ -81,7 +81,7 @@
     min-width: 0;
     padding: clamp(24px, 4vw, 38px);
     border: 1px solid rgba(45, 34, 25, 0.1);
-    background: rgba(255, 255, 255, 0.84);
+    background: var(--color-bg-card);
     box-shadow: 0 12px 32px rgba(45, 34, 25, 0.08);
 }
 
@@ -137,7 +137,7 @@
     align-items: center;
     padding: clamp(22px, 3vw, 32px);
     border: 1px solid rgba(45, 34, 25, 0.12);
-    background: #fff;
+    background: var(--color-bg-card);
     box-shadow: 0 12px 32px rgba(45, 34, 25, 0.08);
     text-align: center;
 }
