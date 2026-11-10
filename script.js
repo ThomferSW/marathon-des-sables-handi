@@ -1,75 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Enregistrement de ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
     const accessBtn = document.getElementById('accessibility-btn');
     const btnText = document.getElementById('btn-text');
-    let animationsEnabled = true;
+    const mainTitle = document.querySelector('.title-main');
+    const subTitle = document.querySelector('.title-sub');
+    const images = Array.from(document.querySelectorAll('.images-container img'));
+    const titleElements = [mainTitle, subTitle].filter(Boolean);
+    const originalTitles = new Map(
+        titleElements.map(element => [element, element.textContent.trim()])
+    );
+    let animationsEnabled = false;
 
-    function toggleAnimations(enable) {
-        if (enable) {
-            ScrollTrigger.refresh();
-            if (btnText) btnText.textContent = "Animations : ON";
-            if (accessBtn) accessBtn.style.opacity = "1";
-        } else {
-            ScrollTrigger.getAll().forEach(st => st.kill());
-            gsap.set(['.bigtitle', '.images-container img', '.title-main .word-inner', '.title-sub .word-inner'], { clearProps: "all" });
-            if (btnText) btnText.textContent = "Animations : OFF";
-            if (accessBtn) accessBtn.style.opacity = "0.7";
-        }
+    function updateButton() {
+        if (!accessBtn || !btnText) return;
+
+        btnText.textContent = animationsEnabled ? "Animations : ON" : "Animations : OFF";
+        accessBtn.setAttribute('aria-pressed', String(animationsEnabled));
+        accessBtn.setAttribute(
+            'aria-label',
+            animationsEnabled ? "Désactiver les animations" : "Activer les animations"
+        );
+        accessBtn.title = animationsEnabled ? "Désactiver les animations" : "Activer les animations";
     }
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(max-width: 800px)').matches;
-    const savedPreference = localStorage.getItem('animations');
-
-    if (savedPreference === 'false' || (savedPreference === null && prefersReducedMotion) || isMobile) {
-        animationsEnabled = false;
-        toggleAnimations(false);
-        if (isMobile && btnText) btnText.textContent = "Animations désactivées sur mobile";
-    } else {
-        initAnimations();
+    function wrapTitle(element) {
+        const text = originalTitles.get(element);
+        element.setAttribute('aria-label', text);
+        element.innerHTML = `<span aria-hidden="true">${text.split(' ').map(word =>
+            `<span class="word-wrap" style="display:inline-block; overflow:hidden; vertical-align:bottom; padding-bottom:5px;"><span class="word-inner" style="display:inline-block; will-change:transform;">${word}&nbsp;</span></span>`
+        ).join('')}</span>`;
     }
 
-    if (accessBtn) {
-        accessBtn.addEventListener('click', () => {
-            animationsEnabled = !animationsEnabled;
-            localStorage.setItem('animations', animationsEnabled);
-            if (animationsEnabled) {
-                location.reload();
-            } else {
-                toggleAnimations(false);
-            }
+    function resetAnimations() {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        gsap.killTweensOf([...titleElements, ...images]);
+        gsap.set([...titleElements, ...images], { clearProps: "all" });
+
+        titleElements.forEach(element => {
+            element.textContent = originalTitles.get(element);
+            element.removeAttribute('aria-label');
         });
     }
 
-    function initAnimations() {
-        if (!animationsEnabled) return;
+    function startAnimations() {
+        titleElements.forEach(wrapTitle);
 
-        // ==========================================
-        // 1. GESTION ACCESSIBLE DU TITRE ET SOUS-TITRE
-        // ==========================================
-        const mainTitle = document.querySelector('.title-main');
-        const subTitle = document.querySelector('.title-sub');
-
-        function makeAccessibleAndWrap(element) {
-            if (!element) return;
-            const originalText = element.textContent.trim();
-
-            // On masque proprement le texte découpé pour les lecteurs d'écran (aria-hidden)
-            // et on force le lecteur d'écran à lire le texte complet d'un seul bloc via aria-label
-            element.setAttribute('aria-label', originalText);
-
-            const words = originalText.split(' ');
-            element.innerHTML = `<span aria-hidden="true">` + words.map(word =>
-                `<span class="word-wrap" style="display:inline-block; overflow:hidden; vertical-align:bottom; padding-bottom:5px;"><span class="word-inner" style="display:inline-block; will-change:transform;">${word}&nbsp;</span></span>`
-            ).join('') + `</span>`;
-        }
-
-        makeAccessibleAndWrap(mainTitle);
-        makeAccessibleAndWrap(subTitle);
-
-        // Animation d'entrée : les mots sortent de leur cache en cascade
         gsap.fromTo('.bigtitle .word-inner',
             { y: 100, opacity: 0, rotate: 5 },
             {
@@ -83,34 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
-        // ==========================================
-        // 2. EFFET DE SURVOL MAGNÉTIQUE SUR LES MOTS
-        // ==========================================
-        const wordInners = document.querySelectorAll('.bigtitle .word-inner');
-        wordInners.forEach(word => {
-            word.addEventListener('mouseenter', () => {
-                if (!animationsEnabled) return;
-                gsap.to(word, {
-                    y: -8,
-                    color: '#873e0e',
-                    duration: 0.4,
-                    ease: 'power2.out'
-                });
-            });
-            word.addEventListener('mouseleave', () => {
-                if (!animationsEnabled) return;
-                gsap.to(word, {
-                    y: 0,
-                    color: '',
-                    duration: 0.4,
-                    ease: 'power2.out'
-                });
-            });
-        });
-
-        // ==========================================
-        // 3. EFFET DE PARALLAXE CINÉMATIQUE AU SCROLL
-        // ==========================================
         gsap.to('.title-main', {
             y: -120,
             opacity: 0,
@@ -119,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 trigger: '.bigtitle',
                 start: 'top top',
                 end: '+=500',
-                scrub: true,
+                scrub: true
             }
         });
 
@@ -131,28 +79,79 @@ document.addEventListener("DOMContentLoaded", () => {
                 trigger: '.bigtitle',
                 start: 'top top',
                 end: '+=400',
-                scrub: true,
+                scrub: true
             }
         });
 
-        // ==========================================
-        // 4. ANIMATION DES IMAGES AU SCROLL
-        // ==========================================
-        const images = document.querySelectorAll('.images-container img');
-        images.forEach((img, index) => {
-            const rotationAngle = index % 2 === 0 ? 25 : -25;
+        if (images.length > 0) {
+            gsap.fromTo(images,
+                { y: 28, opacity: 0, scale: 0.97 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.images-container',
+                        start: 'top 88%',
+                        once: true
+                    }
+                }
+            );
 
-            gsap.to(img, {
-                y: -350,
-                rotation: rotationAngle,
-                scale: 1.25,
-                opacity: 0,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.images-container',
-                    start: 'top bottom',
-                    end: 'center top',
-                    scrub: true,
+            images.forEach((image, index) => {
+                gsap.to(image, {
+                    rotation: index % 2 === 0 ? 8 : -8,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '.images-container',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true
+                    }
+                });
+            });
+        }
+
+        ScrollTrigger.refresh();
+    }
+
+    function setAnimationsEnabled(enabled) {
+        animationsEnabled = enabled;
+
+        if (animationsEnabled) {
+            startAnimations();
+        } else {
+            resetAnimations();
+        }
+
+        updateButton();
+    }
+
+    const savedPreference = localStorage.getItem('animations');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setAnimationsEnabled(savedPreference === null ? !prefersReducedMotion : savedPreference === 'true');
+
+    if (accessBtn) {
+        accessBtn.addEventListener('click', () => {
+            const nextState = !animationsEnabled;
+            localStorage.setItem('animations', String(nextState));
+            setAnimationsEnabled(nextState);
+        });
+    }
+
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        images.forEach(image => {
+            image.addEventListener('mouseenter', () => {
+                if (animationsEnabled) {
+                    gsap.to(image, { y: -6, scale: 1.03, duration: 0.25, ease: 'power2.out' });
+                }
+            });
+            image.addEventListener('mouseleave', () => {
+                if (animationsEnabled) {
+                    gsap.to(image, { y: 0, scale: 1, duration: 0.25, ease: 'power2.out' });
                 }
             });
         });

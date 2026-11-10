@@ -35,7 +35,7 @@ body {
 }
 
 .bigtitle {
-    margin: clamp(48px, 8vh, 100px) auto clamp(72px, 16vh, 200px);
+    margin: clamp(32px, 4vh, 68px) auto clamp(112px, 20vh, 250px);
 }
 
 .title-main {
@@ -56,15 +56,16 @@ body {
     gap: clamp(12px, 2vw, 28px);
     width: min(100% - 48px, 1320px);
     margin: 0 auto;
-    overflow-x: clip;
+    overflow: visible;
 }
 
 .images-container img {
+    display: block;
     width: 100%;
-    height: clamp(120px, 15vw, 200px);
-    max-width: none;
+    height: auto;
+    max-width: 100%;
     margin: 0;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .infomain {
@@ -146,26 +147,42 @@ body {
 
 @media (max-width: 1000px) {
     .navbar {
+        position: sticky;
+        flex-wrap: wrap;
         gap: 12px;
         padding-inline: 20px;
     }
 
+    .navbar > nav {
+        flex: 1 1 100%;
+        min-width: 0;
+        width: 100%;
+    }
+
     .navbar ul {
-        justify-content: flex-end;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 6px;
+        overflow-x: auto;
+        padding: 4px 2px 8px;
+        scrollbar-color: var(--color-accent) var(--color-bg-page);
+        scrollbar-width: thin;
     }
 
     .navbar li {
-        padding: 12px 8px;
-        font-size: 0.92rem;
+        flex: 0 0 auto;
+        padding: 4px;
+        font-size: 0.95rem;
+    }
+
+    .navbar nav a {
+        min-height: 44px;
+        white-space: nowrap;
     }
 
     .images-container {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         width: min(100% - 40px, 760px);
-    }
-
-    .images-container img {
-        height: clamp(150px, 22vw, 210px);
     }
 
     .infomain {
@@ -175,38 +192,24 @@ body {
 
 @media (max-width: 800px) {
     .navbar {
-        position: relative;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 0;
-        padding: 10px 12px 14px;
+        justify-content: flex-start;
+        gap: 12px;
+        padding: 8px 12px;
     }
 
     .navbar > a {
-        flex: 0 0 100%;
-        text-align: center;
+        flex: 0 0 auto;
     }
 
     .navbar .logo {
         width: 62px;
-        margin: 0 auto 8px;
+        margin: 0;
     }
 
-    .navbar ul {
-        justify-content: center;
-        gap: 2px 6px;
-        width: 100%;
-    }
-
-    .navbar li {
-        padding: 8px 7px;
-        font-size: 0.82rem;
-    }
-
-    .navbar a {
-        display: inline-block;
-        min-height: 32px;
-        line-height: 32px;
+    .navbar > nav {
+        margin-inline: -12px;
+        padding-inline: 8px;
     }
 
     .logo-exterieur {
@@ -219,7 +222,7 @@ body {
     }
 
     .bigtitle {
-        margin: clamp(28px, 7vh, 56px) auto clamp(40px, 9vh, 76px);
+        margin: clamp(20px, 5vh, 44px) auto clamp(88px, 14vh, 150px);
         padding-inline: 16px;
     }
 
@@ -239,10 +242,6 @@ body {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
         width: min(100% - 32px, 520px);
-    }
-
-    .images-container img {
-        height: clamp(125px, 40vw, 190px);
     }
 
     .infomain {
@@ -337,21 +336,34 @@ body {
         font-size: 0.78rem;
     }
 
-    #accessibility-btn {
-        display: none;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding-bottom: calc(72px + env(safe-area-inset-bottom));
     }
+
+    .navbar {
+        position: relative;
+    }
+
+    .navbar > nav {
+        position: fixed;
+        z-index: 200;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+        border-top: 1px solid #d3c4b3;
+        background: var(--color-bg-section);
+        box-shadow: 0 -4px 16px rgba(45, 34, 25, 0.14);
+    }
+
 }
 
 @media (max-width: 380px) {
-    .navbar ul {
-        column-gap: 2px;
-    }
-
-    .navbar li {
-        padding-inline: 4px;
-        font-size: 0.76rem;
-    }
-
     .images-container {
         gap: 10px;
     }
