@@ -388,13 +388,13 @@ a:not(.page-button):not(.info-marathon):not(.card-btn):hover {
 @media (max-width: 600px) {
     .navbar nav a {
         flex-direction: column;
-        gap: 3px;
+        gap: 4px;
     }
 
     .tab-icon {
         display: block;
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
         fill: none;
         stroke: currentColor;
         stroke-linecap: round;
@@ -411,8 +411,10 @@ a:not(.page-button):not(.info-marathon):not(.card-btn):hover {
     }
 
     .navbar nav ul {
-        justify-content: space-around;
-        gap: 2px;
+        max-width: 480px;
+        margin: 0 auto;
+        justify-content: center;
+        gap: 4px;
         overflow: visible;
         padding: 0;
     }
@@ -424,11 +426,11 @@ a:not(.page-button):not(.info-marathon):not(.card-btn):hover {
     }
 
     .navbar nav a {
-        min-height: 54px;
+        min-height: 64px;
         justify-content: center;
-        padding: 5px 2px;
+        padding: 6px 4px;
         border-width: 2px;
-        font-size: clamp(0.58rem, 2.4vw, 0.72rem);
+        font-size: clamp(0.68rem, 3vw, 0.78rem);
         line-height: 1.15;
         text-align: center;
         white-space: normal;
@@ -445,7 +447,7 @@ a:not(.page-button):not(.info-marathon):not(.card-btn):hover {
     #accessibility-btn {
         position: fixed;
         right: 12px;
-        bottom: calc(78px + env(safe-area-inset-bottom));
+        bottom: calc(88px + env(safe-area-inset-bottom));
         z-index: 150;
         display: block;
         width: fit-content;
