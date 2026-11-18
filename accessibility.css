@@ -315,8 +315,9 @@ a:not(.page-button):not(.info-marathon):not(.card-btn):hover {
 }
 
 .navbar nav a[aria-current="page"]:hover {
-    background: var(--color-accent);
+    background: var(--color-accent-hover);
     color: #ffffff !important;
+    opacity: 1;
 }
 
 .navbar nav:focus-visible {
@@ -452,6 +453,7 @@ a:not(.page-button):not(.info-marathon):not(.card-btn):hover {
         border-color: var(--color-accent);
         background: var(--color-accent);
         color: #ffffff;
+        opacity: 1;
     }
 
     #accessibility-btn {
